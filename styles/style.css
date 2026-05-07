@@ -1318,7 +1318,6 @@ section#que-es {
   color: var(--ink-soft);
   transition: all .25s;
   background: var(--paper);
-  cursor: pointer;
 }
 
 .zones .z:hover {
@@ -1542,11 +1541,12 @@ section#que-es {
 }
 
 .aviso .v {
-  font-size: 18px;
+  font-size: 14.5px;
   line-height: 1.6;
   color: var(--ink-soft);
   font-style: italic;
   font-family: var(--serif);
+  font-size: 18px;
 }
 
 footer.foot {

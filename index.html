@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Serenus — Serenity for Seniors</title>
-<meta name="description" content="Servicio personalizado de acompañamiento, coordinación médica y asistencia integral para adultos mayores en Guadalajara. Concierge senior profesional para familias." />
 <link rel="icon" type="image/x-icon" href="assets/icons.ico/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +19,7 @@
       <span class="brand-name">Serenus</span>
       <em class="brand-tag">— Serenity for Seniors</em>
     </a>
+
     <div class="nav-links">
       <a href="#que-es">Servicio</a>
       <a href="#servicios">Áreas</a>
@@ -39,8 +39,8 @@
       <div class="hero-text">
         <div class="kicker reveal">Concierge de salud y estilo de vida</div>
         <h1 class="hero-headline reveal d1">
-          Tranquilidad
-          y <em>confianza</em> para
+          Tranquilidad 
+          y <em>confianza</em> para 
           quienes más amas.
         </h1>
         <p class="hero-sub reveal d2">
@@ -77,6 +77,7 @@
 <section id="que-es">
   <div class="wrap">
     <div class="section-label"><span class="num">i.</span> Qué es Serenus</div>
+
     <div class="que-es">
       <div class="left reveal">
         <h2 class="h2">Un cuidado <em>con nombre,</em> presencia<br>y seguimiento.</h2>
@@ -98,6 +99,7 @@
           a lo importante, presentes sin invadir, y en comunicación
           constante con quienes necesitan saber.
         </p>
+
         <div class="promise">
           <div><strong>Dignidad</strong>En cada interacción.</div>
           <div><strong>Criterio</strong>Decisiones con sensibilidad.</div>
@@ -116,6 +118,7 @@
     <p class="lede reveal d1">
       Cada situación es distinta. Estos son algunos de los contextos en los que acompañamos.
     </p>
+
     <div class="quien-grid">
       <div class="quien-card reveal">
         <span class="num">01</span>
@@ -153,6 +156,7 @@
         simplemente un paseo por la tarde.
       </p>
     </div>
+
     <div class="index">
       <div class="idx-row reveal">
         <div class="num">01</div>
@@ -202,6 +206,7 @@
     <p class="lede reveal d1">
       Elige el plan que mejor acompañe la etapa actual. Siempre puedes subir, bajar o personalizar.
     </p>
+
     <div class="plan-grid">
       <div class="plan reveal">
         <div class="head">
@@ -274,6 +279,7 @@
     <p class="lede reveal d1">
       Un proceso simple, pausado y humano — diseñado para que cada familia decida con claridad.
     </p>
+
     <div class="steps">
       <div class="step reveal">
         <div class="n">Paso 01</div>
@@ -315,6 +321,7 @@
           de saber que alguien lo está haciendo bien — por ustedes.
         </p>
       </div>
+
       <div class="reasons">
         <div class="reason reveal">
           <div class="n">01</div>
@@ -360,6 +367,7 @@
 <section id="sobre" class="sobre">
   <div class="wrap">
     <div class="section-label"><span class="num">vii.</span> Sobre nosotros</div>
+
     <div class="sobre-grid">
       <div class="sobre-text">
         <h2 class="h2 reveal">Un proyecto <em>personal,</em><br>hecho servicio.</h2>
@@ -395,6 +403,7 @@
   <div class="wrap">
     <div class="section-label"><span class="num">viii.</span> Zona de cobertura</div>
     <h2 class="h2 reveal">Presentes en la <em>Zona Metropolitana</em><br>de Guadalajara.</h2>
+
     <div class="grid">
       <div class="intro-t reveal">
         <strong>Servicio profesional en toda la ZMG.</strong>
@@ -442,6 +451,7 @@
   <div class="wrap">
     <div class="section-label"><span class="num">ix.</span> Preguntas frecuentes</div>
     <h2 class="h2 reveal">Respuestas claras,<br>antes de <em>la primera llamada.</em></h2>
+
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q"><span class="n">01</span><span class="q">¿Qué hace <em>exactamente</em> Serenus?</span><span class="pm">+</span></button>
@@ -479,20 +489,23 @@
 <section id="contacto" class="contacto">
   <div class="wrap">
     <div class="section-label"><span class="num">x.</span> Contacto</div>
+
     <div class="contacto-grid">
       <div class="closer">
         <h2 class="h-big reveal">Hablemos con <em>calma.</em><br>Para que el resto sea tranquilidad.</h2>
         <div class="ctas reveal d1">
+
           <a href="https://wa.me/523320202019" class="btn btn-ghost" target="_blank">
             <span class="wa" aria-hidden="true"></span>
             Contactar por WhatsApp
           </a>
         </div>
       </div>
+
       <div class="contact-info reveal d2">
         <div class="row">
           <span class="k">Contacto</span>
-          <span class="v"><em>Francisco Z. Guerrero</em></span>
+          <span class="v""><em>Francisco Z. Guerrero</em></span>
         </div>
         <div class="row">
           <span class="k">Oficina</span>
@@ -531,53 +544,68 @@
 </section>
 
 <!-- Sticky WhatsApp -->
-<a href="https://wa.me/523320202019" class="sticky-wa" id="stickyWa" target="_blank">
+<a href="https://wa.me/523320202019" class="sticky-wa" id="stickyWa">
   <span class="wa-dot" aria-hidden="true"></span>
   WhatsApp
 </a>
 
 <script>
+  // Nav shadow on scroll
   const nav = document.getElementById('topnav');
   const sticky = document.getElementById('stickyWa');
-
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     nav.classList.toggle('scrolled', y > 20);
     sticky.classList.toggle('show', y > 600);
-  }, { passive: true });
+  });
 
+  // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-q');
     q.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(o => { if (o !== item) o.classList.remove('open'); });
+      // Close others (optional — feels more editorial)
+      document.querySelectorAll('.faq-item.open').forEach(o => { if (o !== item) o.classList.remove('open');});
       item.classList.toggle('open', !isOpen);
     });
   });
 
+  // Open first FAQ by default
   document.querySelector('.faq-item')?.classList.add('open');
-
-  const whatsappNumber = '523320202019';
-  document.querySelectorAll('.z').forEach(tag => {
-    tag.addEventListener('click', () => {
-      if (tag.classList.contains('more')) {
-        const mensaje = encodeURIComponent('Hola, buen día. Me gustaría saber si tienes disponibilidad en la zona de ');
-        window.open(`https://wa.me/${whatsappNumber}?text=${mensaje}`, '_blank', 'noopener,noreferrer');
-        return;
-      }
-      const colonia = tag.textContent.trim();
-      const query = encodeURIComponent(`${colonia}, Jalisco`);
-      window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank', 'noopener,noreferrer');
-    });
-  });
 </script>
 
 </body>
+<script>
+  const whatsappNumber = '523320202019';
+
+  document.querySelectorAll('.z').forEach(tag => {
+    tag.addEventListener('click', () => {
+      if (tag.classList.contains('more')) {
+        const mensaje = encodeURIComponent(
+          'Hola, buen día. Me gustaría saber si tienes disponibilidad en la zona de '
+        );
+        window.open(
+          `https://wa.me/${whatsappNumber}?text=${mensaje}`,
+          '_blank',
+          'noopener,noreferrer'
+        );
+        return;
+      }
+
+      const colonia = tag.textContent.trim();
+      const query = encodeURIComponent(`${colonia}, Jalisco`);
+      window.open(
+        `https://www.google.com/maps/search/?api=1&query=${query}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    });
+  });
+</script>
 </html>
