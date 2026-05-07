@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Serenus — Serenity for Seniors</title>
+<template id="__bundler_thumbnail" data-bg-color="#F5F0E8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F5F0E8"/>
+    <text x="600" y="440" text-anchor="middle" font-family="Cormorant Garamond, Times New Roman, serif" font-size="180" fill="#201E1A" font-weight="400">Seren<tspan font-style="italic" fill="#8B6F47">u</tspan>s</text>
+    <text x="600" y="520" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="36" fill="#6B5D4F">Serenity for Seniors</text>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --cream:#F5F0E8;
+    --cream-2:#EFE7D9;
+    --paper:#FBF8F2;
+    --ink:#201E1A;
+    --ink-soft:#2C2A26;
+    --taupe:#8B6F47;
+    --taupe-deep:#6B5D4F;
+    --sand:#D4B896;
+    --sand-soft:#E6D6BE;
+    --line: color-mix(in oklab, var(--ink) 15%, transparent);
+    --line-soft: color-mix(in oklab, var(--ink) 8%, transparent);
+    --serif:"Cormorant Garamond", "Times New Roman", serif;
+    --sans:"Inter", system-ui, sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    font-size:17px;
+    line-height:1.55;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit; text-decoration:none}
+  button{font:inherit; cursor:pointer; background:none; border:none; color:inherit}
+  img{max-width:100%; display:block}
+
+  /* ========== Layout ========== */
+  .wrap{ max-width: 1360px; margin: 0 auto; padding: 0 40px;}
+  @media (max-width:720px){ .wrap{padding: 0 22px}}
+
+  /* ========== NAV ========== */
+  nav.top{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    backdrop-filter: blur(14px);
+    background: color-mix(in oklab, var(--cream) 82%, transparent);
+    border-bottom: 1px solid transparent;
+    transition: border-color .4s ease, background .4s ease;
+  }
+  nav.top.scrolled{ border-bottom-color: var(--line-soft); }
+  nav.top .inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 40px;
+    max-width: 1360px; margin: 0 auto;
+  }
+  .brand{
+    font-family:var(--serif); font-size: 26px; letter-spacing: .01em;
+    font-weight:500;
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .brand em{ font-style: italic; font-weight: 400; color: var(--taupe);}
+  .brand .dot{
+    width:6px; height:6px; border-radius:50%; background:var(--taupe);
+    display:inline-block; margin: 0 6px 3px;
+  }
+  .nav-links{ display:flex; gap:30px; font-size: 13.5px; letter-spacing:.02em; color:var(--ink-soft);}
+  .nav-links a{ opacity:.78; transition: opacity .2s;}
+  .nav-links a:hover{opacity:1}
+  .nav-cta{
+    font-size:13px; letter-spacing:.04em;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background:var(--ink);
+    color:var(--cream);
+    transition: background .25s;
+  }
+  .nav-cta:hover{ background:var(--taupe);}
+  @media (max-width:900px){ .nav-links{display:none} nav.top .inner{padding: 16px 22px} }
+
+  /* ========== HERO ========== */
+  .hero{
+    padding: 140px 0 80px;
+    position:relative;
+  }
+  .hero-top{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    border-bottom:1px solid var(--line);
+    padding-bottom:24px; margin-bottom: 56px;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--taupe-deep);
+  }
+  .hero-top .issue em{ font-family:var(--serif); text-transform:none; letter-spacing:0; font-style:italic; font-size:14px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 64px;
+    align-items: stretch;
+  }
+  @media (max-width: 980px){ .hero-grid{ grid-template-columns:1fr; gap: 40px;}}
+
+  .hero-text .kicker{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--taupe); margin-bottom: 40px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .hero-text .kicker::before{
+    content:""; width:28px; height:1px; background: var(--taupe);
+  }
+  .hero-headline{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(52px, 7.2vw, 108px);
+    line-height: .96;
+    letter-spacing:-0.018em;
+    color:var(--ink);
+    margin-bottom: 32px;
+  }
+  .hero-headline em{
+    font-style: italic;
+    font-weight: 400;
+    color: var(--taupe);
+  }
+  .hero-sub{
+    font-size: 18px;
+    line-height:1.55;
+    color: var(--ink-soft);
+    max-width: 480px;
+    margin-bottom: 44px;
+  }
+  .hero-ctas{ display:flex; gap: 14px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    display:inline-flex; align-items:center; gap:12px;
+    padding: 16px 26px; border-radius: 999px;
+    font-size:14.5px; letter-spacing:.015em;
+    transition: all .28s cubic-bezier(.2,.7,.2,1);
+    white-space: nowrap;
+    min-height: 52px;
+  }
+  .btn-primary{
+    background: var(--ink); color: var(--cream);
+  }
+  .btn-primary:hover{ background: var(--taupe); transform: translateY(-1px);}
+  .btn-ghost{
+    background: transparent; color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color: var(--ink); background: var(--paper);}
+  .btn .arrow{
+    width:18px; height:10px;
+    transition: transform .3s;
+  }
+  .btn:hover .arrow{ transform: translateX(4px);}
+  .btn .wa{
+    width:16px; height:16px; border-radius:50%; background:#25D366; display:inline-block;
+    box-shadow: 0 0 0 3px color-mix(in oklab, #25D366 25%, transparent);
+  }
+
+  /* Hero imagery */
+  .hero-media{
+    position:relative;
+    min-height: 560px;
+    border-radius: 4px;
+    overflow:hidden;
+    background:
+      repeating-linear-gradient(135deg,
+        color-mix(in oklab, var(--sand) 55%, var(--cream)) 0 14px,
+        color-mix(in oklab, var(--sand) 35%, var(--cream)) 14px 28px);
+  }
+  .hero-media::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent 55%, color-mix(in oklab, var(--ink) 40%, transparent));
+  }
+  .hero-media .tag{
+    position:absolute; left:20px; bottom:20px;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase;
+    color: var(--cream); z-index:2; opacity:.9;
+  }
+  .hero-media .tag em{ font-family:var(--serif); font-style: italic; text-transform:none; letter-spacing:0; font-size:13px;}
+  .hero-media .corner{
+    position:absolute; top:20px; right:20px; z-index:2;
+    font-family:var(--serif); font-style:italic; color:var(--cream);
+    font-size: 22px;
+  }
+  .hero-quote{
+    grid-column: 1 / -1;
+    border-top:1px solid var(--line);
+    margin-top: 72px; padding-top: 32px;
+    display:grid; grid-template-columns: 1fr auto; gap:40px; align-items:end;
+  }
+  .hero-quote p{
+    font-family:var(--serif); font-size: clamp(22px, 2.2vw, 32px);
+    font-style:italic; font-weight: 400; line-height: 1.25;
+    color: var(--ink-soft);
+    max-width: 780px;
+  }
+  .hero-quote .sig{
+    font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--taupe-deep); text-align:right; white-space:nowrap;
+  }
+
+  /* ========== Section scaffolding ========== */
+  section{ padding: 120px 0; position:relative;}
+  @media (max-width:720px){ section{padding: 80px 0}}
+  .section-label{
+    font-family:var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--taupe); margin-bottom: 32px;
+    display:flex; align-items:center; gap: 14px;
+  }
+  .section-label .num{
+    font-family:var(--serif); font-style:italic; font-size:15px; letter-spacing:0;
+    color: var(--taupe-deep);
+  }
+  .section-label::after{
+    content:""; flex:1; height:1px; background:var(--line-soft);
+  }
+  .h2{
+    font-family:var(--serif); font-weight: 400;
+    font-size: clamp(36px, 4.4vw, 64px);
+    line-height:1.02; letter-spacing:-.012em;
+    max-width: 900px;
+    color: var(--ink);
+  }
+  .h2 em{ font-style:italic; color:var(--taupe);}
+  .lede{
+    font-size: 19px; line-height: 1.6; color: var(--ink-soft);
+    max-width: 640px;
+    margin-top: 28px;
+  }
+
+  /* ========== QUÉ ES ========== */
+  .que-es{
+    display:grid; grid-template-columns: 1fr 1.1fr; gap: 100px;
+    align-items:start;
+  }
+  @media (max-width: 980px){ .que-es{ grid-template-columns:1fr; gap:56px;}}
+  .que-es .left .h2{ font-size: clamp(40px, 5.2vw, 76px);}
+  .que-es .right{
+    padding-top: 14px;
+  }
+  .que-es .right p{
+    font-size: 18px; line-height: 1.65; color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .que-es .right p.pull{
+    font-family:var(--serif); font-size: clamp(22px, 2vw, 28px); font-style: italic;
+    font-weight: 400; line-height: 1.35; color: var(--ink);
+    border-left: 2px solid var(--taupe);
+    padding-left: 22px; margin: 32px 0;
+  }
+  .promise{
+    margin-top: 40px; padding-top:26px; border-top: 1px solid var(--line-soft);
+    display:flex; gap: 24px; flex-wrap: wrap;
+  }
+  .promise div{ font-size:14px; color:var(--taupe-deep);}
+  .promise strong{ font-family:var(--serif); font-weight:500; color:var(--ink); font-size:16px; display:block; margin-bottom:4px;}
+
+  /* ========== PARA QUIÉN ========== */
+  .para-quien{
+    background: var(--paper);
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .quien-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+    background: var(--line-soft);
+    margin-top: 60px;
+  }
+  @media (max-width: 720px){ .quien-grid{ grid-template-columns: 1fr}}
+  .quien-card{
+    background: var(--paper); padding: 48px 44px;
+    display:flex; flex-direction:column; gap: 18px;
+    min-height: 260px;
+    transition: background .3s;
+  }
+  .quien-card:hover{ background: var(--cream-2);}
+  .quien-card .num{
+    font-family:var(--serif); font-style:italic; font-size: 28px; color: var(--taupe);
+    line-height:1;
+  }
+  .quien-card h3{
+    font-family:var(--serif); font-weight: 400;
+    font-size: clamp(24px, 2vw, 32px); line-height: 1.15;
+    color: var(--ink);
+    letter-spacing:-.005em;
+  }
+  .quien-card h3 em{ font-style: italic; color: var(--taupe-deep);}
+  .quien-card p{ color: var(--ink-soft); font-size: 16px; line-height: 1.55;}
+
+  /* ========== SERVICIOS (index style) ========== */
+  .servicios .intro{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items:end;
+    margin-bottom: 80px;
+  }
+  @media (max-width: 900px){ .servicios .intro{ grid-template-columns:1fr; gap:28px;}}
+  .index{
+    border-top: 1px solid var(--ink);
+  }
+  .idx-row{
+    display:grid; grid-template-columns: 80px 1fr 2fr 60px;
+    gap: 40px; padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: start;
+    cursor: pointer;
+    transition: padding .3s, background .3s;
+    position:relative;
+  }
+  @media (max-width:900px){
+    .idx-row{ grid-template-columns: 50px 1fr 40px; gap: 20px;}
+    .idx-row .detail{ grid-column: 2 / 3}
+  }
+  .idx-row:hover{ padding-left: 12px;}
+  .idx-row .num{
+    font-family:var(--serif); font-style: italic; font-size: 22px; color: var(--taupe); line-height:1;
+    padding-top: 10px;
+  }
+  .idx-row .title{
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(28px, 3vw, 44px); line-height: 1.05;
+    color: var(--ink); letter-spacing:-.01em;
+  }
+  .idx-row .title em{ font-style:italic; color: var(--taupe-deep);}
+  .idx-row .detail{
+    font-size: 16px; color: var(--ink-soft); line-height: 1.55;
+    padding-top: 12px;
+  }
+  @media (max-width:900px){ .idx-row .detail{ font-size:15px;}}
+  .idx-row .chev{
+    font-family:var(--serif); font-size:28px; color:var(--taupe-deep);
+    transition: transform .3s;
+    padding-top: 4px; text-align:right;
+    font-style: italic;
+  }
+  .idx-row:hover .chev{ transform: translateX(6px);}
+
+  /* ========== PLANES ========== */
+  .planes{ background: var(--ink); color: var(--cream);}
+  .planes .section-label{ color: var(--sand);}
+  .planes .section-label .num{ color: var(--sand);}
+  .planes .section-label::after{ background: color-mix(in oklab, var(--cream) 15%, transparent);}
+  .planes .h2{ color: var(--cream);}
+  .planes .h2 em{ color: var(--sand);}
+  .planes .lede{ color: color-mix(in oklab, var(--cream) 72%, transparent);}
+
+  .plan-grid{
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 72px;
+    align-items: stretch;
+  }
+  @media (max-width: 980px){ .plan-grid{ grid-template-columns: 1fr; gap: 16px;}}
+  .plan{
+    background: color-mix(in oklab, var(--cream) 5%, transparent);
+    border: 1px solid color-mix(in oklab, var(--cream) 14%, transparent);
+    border-radius: 3px;
+    padding: 40px 34px 36px;
+    display:flex; flex-direction:column;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), background .3s, border-color .3s;
+    position: relative;
+  }
+  .plan:hover{
+    background: color-mix(in oklab, var(--cream) 8%, transparent);
+    border-color: color-mix(in oklab, var(--cream) 26%, transparent);
+  }
+  .plan.featured{
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--cream);
+    transform: translateY(-12px);
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,.35);
+  }
+  @media (max-width: 980px){ .plan.featured{ transform:none;}}
+  .plan.featured:hover{ background: var(--cream); transform: translateY(-14px);}
+  @media (max-width: 980px){ .plan.featured:hover{ transform:none;}}
+  .plan .ribbon{
+    position:absolute; top: -12px; left: 34px;
+    font-family:var(--mono); font-size: 10px; letter-spacing: .2em; text-transform:uppercase;
+    background: var(--taupe); color: var(--cream);
+    padding: 5px 12px; border-radius: 999px;
+  }
+  .plan .head{ border-bottom: 1px solid color-mix(in oklab, currentColor 15%, transparent); padding-bottom: 24px; margin-bottom:24px;}
+  .plan .tier{ font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase; opacity:.7; margin-bottom: 12px;}
+  .plan .name{
+    font-family: var(--serif); font-weight:400; font-size: 40px; line-height: 1;
+    letter-spacing:-.01em;
+  }
+  .plan .name em{ font-style: italic; color: var(--sand);}
+  .plan.featured .name em{ color: var(--taupe);}
+  .plan .price{
+    font-family: var(--serif); font-size: 44px; line-height:1; margin-top: 22px;
+    letter-spacing:-.01em;
+  }
+  .plan .price .m{ font-family:var(--mono); font-size: 13px; letter-spacing:.14em; text-transform:uppercase; opacity:.65; margin-left:6px;}
+  .plan ul{ list-style:none; display:flex; flex-direction:column; gap: 12px; flex:1;}
+  .plan li{
+    font-size: 15px; line-height: 1.5;
+    padding-left: 22px; position:relative;
+    opacity: .9;
+  }
+  .plan li::before{
+    content:""; position:absolute; left:0; top: 10px; width:10px; height:1px; background: currentColor; opacity:.55;
+  }
+  .plan .cta{
+    margin-top: 28px;
+    display:inline-flex; align-items:center; justify-content:space-between;
+    padding: 14px 20px; border-radius: 999px;
+    border: 1px solid color-mix(in oklab, currentColor 30%, transparent);
+    font-size: 13.5px; letter-spacing:.03em;
+    transition: all .25s;
+  }
+  .plan .cta:hover{ background: currentColor; color: var(--ink);}
+  .plan.featured .cta{ background: var(--ink); color: var(--cream); border-color: var(--ink);}
+  .plan.featured .cta:hover{ background: var(--taupe); border-color: var(--taupe);}
+
+  .plan-footer{
+    margin-top: 56px; padding: 32px 36px;
+    border: 1px solid color-mix(in oklab, var(--cream) 18%, transparent);
+    border-radius: 3px;
+    display:flex; justify-content: space-between; align-items: center; gap: 30px; flex-wrap:wrap;
+  }
+  .plan-footer .t{ font-family:var(--serif); font-size: 26px; font-style:italic; color: var(--cream);}
+  .plan-footer .s{ font-size:15px; color: color-mix(in oklab, var(--cream) 70%, transparent); max-width: 520px;}
+  .plan-footer .link{
+    font-family:var(--mono); font-size:12px; letter-spacing:.16em; text-transform:uppercase; color: var(--sand);
+    border-bottom:1px solid color-mix(in oklab, var(--sand) 40%, transparent); padding-bottom:4px;
+  }
+
+  /* ========== CÓMO FUNCIONA ========== */
+  .como{ background: var(--paper);}
+  .steps{
+    margin-top: 72px;
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--line-soft);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 900px){ .steps{ grid-template-columns: repeat(2, 1fr);} }
+  @media (max-width: 560px){ .steps{ grid-template-columns: 1fr;} }
+  .step{
+    background: var(--paper);
+    padding: 40px 32px 44px;
+    display:flex; flex-direction: column; gap: 16px;
+    min-height: 260px;
+    transition: background .3s;
+  }
+  .step:hover{ background: var(--cream);}
+  .step .n{
+    font-family:var(--mono); font-size: 11px; letter-spacing:.2em; color: var(--taupe);
+  }
+  .step .big{
+    font-family: var(--serif); font-style: italic; font-weight: 400;
+    font-size: 92px; line-height: .85; color: var(--taupe);
+    letter-spacing: -.02em;
+    margin-top: 8px; margin-bottom: 12px;
+  }
+  .step h4{ font-family:var(--serif); font-size: 24px; font-weight: 500; line-height:1.15; color: var(--ink); letter-spacing:-.005em;}
+  .step p{ color: var(--ink-soft); font-size: 15px; line-height:1.5;}
+
+  /* ========== POR QUÉ ========== */
+  .porque{
+    display:grid; grid-template-columns: 1fr 1.2fr; gap: 90px;
+  }
+  @media (max-width: 980px){ .porque{ grid-template-columns: 1fr; gap: 40px;}}
+  .reasons{ display:flex; flex-direction: column;}
+  .reason{
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+    display:grid; grid-template-columns: 50px 1fr; gap: 24px; align-items: baseline;
+  }
+  .reason:last-child{ border-bottom: 1px solid var(--line);}
+  .reason .n{ font-family:var(--mono); font-size: 12px; color: var(--taupe); letter-spacing:.15em;}
+  .reason .t{
+    font-family:var(--serif); font-size: clamp(22px, 2.2vw, 30px); font-weight: 400; line-height: 1.2;
+    letter-spacing:-.005em;
+  }
+  .reason .t em{ font-style:italic; color: var(--taupe-deep);}
+  .reason .d{ grid-column: 2; font-size: 15px; color: var(--ink-soft); margin-top:8px; max-width: 540px;}
+
+  /* ========== SOBRE ========== */
+  .sobre{
+    background: var(--ink); color: var(--cream);
+  }
+  .sobre .section-label{color:var(--sand)}
+  .sobre .section-label .num{color:var(--sand)}
+  .sobre .section-label::after{ background: color-mix(in oklab, var(--cream) 15%, transparent);}
+  .sobre-grid{
+    display:grid; grid-template-columns: .9fr 1.1fr; gap: 80px;
+    margin-top: 60px;
+  }
+  @media (max-width: 980px){ .sobre-grid{ grid-template-columns: 1fr; gap: 40px;}}
+  .mision-card{
+    padding: 36px 0;
+    border-top: 1px solid color-mix(in oklab, var(--cream) 20%, transparent);
+  }
+  .mision-card:last-child{ border-bottom: 1px solid color-mix(in oklab, var(--cream) 20%, transparent);}
+  .mision-card .k{
+    font-family:var(--mono); font-size: 11px; letter-spacing:.2em; text-transform:uppercase; color: var(--sand);
+    margin-bottom: 16px;
+  }
+  .mision-card p{
+    font-family: var(--serif); font-size: clamp(24px, 2.4vw, 34px); line-height: 1.25;
+    font-weight: 400; color: var(--cream);
+  }
+  .mision-card p em{ font-style: italic; color: var(--sand);}
+
+  .founder{
+    background: color-mix(in oklab, var(--cream) 6%, transparent);
+    padding: 40px; border-radius: 3px;
+    border: 1px solid color-mix(in oklab, var(--cream) 14%, transparent);
+  }
+  .founder .portrait{
+    aspect-ratio: 4/5; border-radius: 2px;
+    background:
+      repeating-linear-gradient(135deg,
+        color-mix(in oklab, var(--sand) 28%, var(--ink)) 0 10px,
+        color-mix(in oklab, var(--sand) 18%, var(--ink)) 10px 20px);
+    margin-bottom: 24px; position:relative; overflow:hidden;
+  }
+  .founder .portrait::after{
+    content:"Retrato — Francisco Z. Guerrero";
+    position:absolute; left:14px; bottom: 12px;
+    font-family:var(--mono); font-size: 10px; letter-spacing:.14em;
+    color: color-mix(in oklab, var(--cream) 60%, transparent); text-transform: uppercase;
+  }
+  .founder .name{
+    font-family: var(--serif); font-size: 32px; font-weight: 400; letter-spacing:-.01em;
+    line-height: 1.1;
+  }
+  .founder .name em{ font-style:italic; color:var(--sand);}
+  .founder .role{
+    font-family:var(--mono); font-size: 11px; letter-spacing:.18em; text-transform:uppercase;
+    color: color-mix(in oklab, var(--cream) 60%, transparent);
+    margin-top: 10px;
+  }
+  .founder .bio{
+    font-size: 15.5px; line-height: 1.6; margin-top: 18px;
+    color: color-mix(in oklab, var(--cream) 75%, transparent);
+  }
+
+  /* ========== COBERTURA ========== */
+  .cobertura .grid{
+    display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; align-items: start;
+    margin-top: 60px;
+  }
+  @media (max-width: 980px){ .cobertura .grid{ grid-template-columns: 1fr; gap: 40px;}}
+  .cobertura .intro-t{ font-size:17px; line-height:1.6; color:var(--ink-soft);}
+  .cobertura .intro-t strong{ font-family:var(--serif); font-weight:500; color:var(--ink); font-size: 20px; display:block; margin-bottom:12px;}
+  .zones{
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .zones .z{
+    font-size: 14px; padding: 7px 14px; border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    transition: all .25s;
+    background: var(--paper);
+  }
+  .zones .z:hover{ background: var(--ink); color: var(--cream); border-color: var(--ink);}
+  .zones .more{
+    font-style: italic; font-family: var(--serif); font-size: 16px; color: var(--taupe); padding: 7px 14px; border:1px dashed var(--taupe); background:transparent;
+  }
+
+  /* ========== FAQ ========== */
+  .faq{ background: var(--paper); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft);}
+  .faq-list{ margin-top: 60px; border-top: 1px solid var(--line);}
+  .faq-item{ border-bottom: 1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left;
+    display:grid; grid-template-columns: 60px 1fr 40px; gap:24px; align-items: baseline;
+    padding: 30px 0;
+    transition: padding .3s;
+  }
+  .faq-q:hover{ padding-left: 8px;}
+  .faq-q .n{ font-family:var(--mono); font-size: 11px; color: var(--taupe); letter-spacing:.2em;}
+  .faq-q .q{
+    font-family: var(--serif); font-size: clamp(22px, 2.2vw, 30px); font-weight: 400; line-height: 1.2;
+    letter-spacing: -.005em; color: var(--ink);
+  }
+  .faq-q .q em{ font-style: italic; color: var(--taupe-deep);}
+  .faq-q .pm{
+    font-family: var(--serif); font-style:italic; font-size: 30px; color: var(--taupe); text-align: right;
+    transition: transform .35s cubic-bezier(.2,.7,.2,1);
+    align-self: center;
+  }
+  .faq-item.open .faq-q .pm{ transform: rotate(45deg);}
+  .faq-a{
+    display:grid; grid-template-rows: 0fr;
+    transition: grid-template-rows .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .faq-a > div{ overflow: hidden;}
+  .faq-item.open .faq-a{ grid-template-rows: 1fr;}
+  .faq-a p{
+    padding: 0 80px 36px 84px;
+    font-size: 16.5px; line-height: 1.6; color: var(--ink-soft);
+    max-width: 820px;
+  }
+  @media (max-width: 720px){
+    .faq-q{ grid-template-columns: 40px 1fr 30px; gap:16px;}
+    .faq-a p{ padding: 0 0 28px 56px;}
+  }
+
+  /* ========== CONTACTO ========== */
+  .contacto{
+    padding: 140px 0 80px;
+    position:relative;
+  }
+  .contacto-grid{
+    display:grid; grid-template-columns: 1.1fr .9fr; gap: 80px;
+    align-items: end;
+  }
+  @media (max-width: 980px){ .contacto-grid{ grid-template-columns:1fr; gap: 40px;}}
+  .closer .h-big{
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(56px, 7.8vw, 124px);
+    line-height: .94; letter-spacing: -.018em;
+  }
+  .closer .h-big em{ font-style: italic; color: var(--taupe);}
+  .closer .ctas{ display:flex; gap:14px; margin-top: 44px; flex-wrap:wrap;}
+  .contact-info{
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .contact-info .row{
+    display:grid; grid-template-columns: 110px 1fr; gap: 20px;
+    padding: 18px 0; border-bottom: 1px solid var(--line-soft);
+    font-size: 15.5px;
+  }
+  .contact-info .row .k{
+    font-family:var(--mono); font-size: 10.5px; letter-spacing:.18em; text-transform:uppercase; color: var(--taupe); padding-top:3px;
+  }
+  .contact-info .row .v{ color: var(--ink); line-height: 1.55;}
+  .contact-info .row .v em{ font-family:var(--serif); font-style: italic; color: var(--taupe-deep);}
+  .contact-info .row a:hover{ color: var(--taupe);}
+
+  .aviso{
+    margin-top: 80px; padding-top: 36px;
+    border-top: 1px solid var(--line);
+    display:grid; grid-template-columns: 180px 1fr; gap: 30px;
+    max-width: 960px;
+  }
+  @media (max-width: 720px){ .aviso{ grid-template-columns: 1fr; gap: 10px;}}
+  .aviso .k{ font-family:var(--mono); font-size: 11px; letter-spacing:.2em; text-transform:uppercase; color: var(--taupe);}
+  .aviso .v{ font-size: 14.5px; line-height:1.6; color: var(--ink-soft); font-style: italic; font-family:var(--serif); font-size: 18px;}
+
+  footer.foot{
+    padding: 40px 0 40px;
+    border-top: 1px solid var(--line-soft);
+    margin-top: 40px;
+    display:flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 20px;
+    font-family:var(--mono); font-size: 11px; letter-spacing:.14em; text-transform: uppercase;
+    color: var(--taupe-deep);
+  }
+  footer.foot em{ font-family: var(--serif); font-style: italic; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--taupe);}
+
+  /* ========== Sticky WhatsApp ========== */
+  .sticky-wa{
+    position: fixed; bottom: 24px; right: 24px; z-index: 40;
+    background: var(--ink); color: var(--cream);
+    padding: 14px 18px; border-radius: 999px;
+    font-size: 13.5px; letter-spacing:.02em;
+    display:flex; align-items:center; gap:10px;
+    box-shadow: 0 12px 40px -10px rgba(0,0,0,.3);
+    transition: transform .3s, background .3s;
+    transform: translateY(120%);
+  }
+  .sticky-wa.show{ transform: translateY(0);}
+  .sticky-wa:hover{ background: var(--taupe);}
+  .sticky-wa .wa-dot{ width:10px; height:10px; border-radius:50%; background:#25D366; box-shadow:0 0 0 4px color-mix(in oklab,#25D366 30%, transparent); animation: pulse 2s ease-in-out infinite;}
+  @keyframes pulse{ 0%,100%{opacity:1} 50%{opacity:.6}}
+
+  /* ========== Reveal animations ========== */
+  .reveal{ opacity:0; transform: translateY(24px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{ opacity:1; transform: none;}
+  .reveal.d1{ transition-delay: .08s;}
+  .reveal.d2{ transition-delay: .16s;}
+  .reveal.d3{ transition-delay: .24s;}
+  .reveal.d4{ transition-delay: .32s;}
+
+  /* Larger hit targets on mobile */
+  @media (max-width: 720px){
+    .btn{ min-height: 56px; padding: 16px 22px;}
+    body{ font-size: 17px;}
+    .hero{ padding: 120px 0 60px;}
+  }
+
+  ::selection{ background: var(--taupe); color: var(--cream);}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="top" id="topnav">
+  <div class="inner">
+    <a href="#top" class="brand" aria-label="Serenus">
+      Serenus <em>— Serenity for Seniors</em>
+    </a>
+    <div class="nav-links">
+      <a href="#que-es">Servicio</a>
+      <a href="#servicios">Áreas</a>
+      <a href="#planes">Planes</a>
+      <a href="#como">Proceso</a>
+      <a href="#sobre">Nosotros</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#contacto" class="nav-cta">Agendar consulta</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="issue">Concierge · Guadalajara · MMXXVI</span>
+      <span class="issue"><em>Un servicio privado para familias</em></span>
+      <span class="issue">№ 01</span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="kicker reveal">Concierge de salud y estilo de vida</div>
+        <h1 class="hero-headline reveal d1">
+          Tranquilidad<br>
+          y <em>confianza</em> para<br>
+          quienes más amas.
+        </h1>
+        <p class="hero-sub reveal d2">
+          Servicio personalizado de acompañamiento, coordinación médica
+          y asistencia integral para adultos mayores en Guadalajara.
+          Diseñado para quienes quieren lo mejor para sus padres — y
+          para quienes viven con la serenidad de saber que están bien atendidos.
+        </p>
+        <div class="hero-ctas reveal d3">
+          <a href="#contacto" class="btn btn-primary">
+            Agendar consulta
+            <svg class="arrow" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://wa.me/523320202019" class="btn btn-ghost">
+            <span class="wa" aria-hidden="true"></span>
+            Contactar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-media reveal d2" aria-label="Imagen editorial: adulto mayor acompañado por familiar">
+        <span class="corner">i.</span>
+        <span class="tag"><em>Foto editorial —</em> &nbsp; ADULTO MAYOR · ACOMPAÑAMIENTO · GUADALAJARA</span>
+      </div>
+
+      <div class="hero-quote reveal d3">
+        <p>"Cuidar a quien siempre nos cuidó <em>no debería sentirse como un peso</em> — debería sentirse como un privilegio atendido con pausa, cercanía y criterio."</p>
+        <span class="sig">Filosofía Serenus · 2026</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ QUÉ ES ============ -->
+<section id="que-es">
+  <div class="wrap">
+    <div class="section-label"><span class="num">i.</span> Qué es Serenus</div>
+
+    <div class="que-es">
+      <div class="left reveal">
+        <h2 class="h2">Un cuidado <em>con nombre,</em> presencia<br>y seguimiento.</h2>
+      </div>
+      <div class="right reveal d1">
+        <p>
+          Serenus es un servicio profesional de acompañamiento y
+          coordinación integral para personas mayores y sus familias.
+          Brindamos apoyo personalizado en temas médicos, administrativos
+          y de vida diaria, ofreciendo tranquilidad, organización y
+          seguimiento confiable.
+        </p>
+        <p class="pull">
+          Nuestro compromiso es que cada adulto mayor reciba atención
+          digna, respetuosa y profesional — cada día, en cada detalle.
+        </p>
+        <p>
+          Trabajamos como una extensión discreta de la familia: atentos
+          a lo importante, presentes sin invadir, y en comunicación
+          constante con quienes necesitan saber.
+        </p>
+
+        <div class="promise">
+          <div><strong>Dignidad</strong>En cada interacción.</div>
+          <div><strong>Criterio</strong>Decisiones con sensibilidad.</div>
+          <div><strong>Presencia</strong>Acompañamiento real.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUIÉN ============ -->
+<section id="para-quien" class="para-quien">
+  <div class="wrap">
+    <div class="section-label"><span class="num">ii.</span> Para quién es</div>
+    <h2 class="h2 reveal">Pensado para familias que<br>buscan <em>algo más que un servicio.</em></h2>
+    <p class="lede reveal d1">
+      Cada situación es distinta. Estos son algunos de los contextos en los que acompañamos.
+    </p>
+
+    <div class="quien-grid">
+      <div class="quien-card reveal">
+        <span class="num">01</span>
+        <h3>Familias que <em>no siempre pueden</em> acompañar a sus padres a citas o procedimientos.</h3>
+        <p>Coordinamos, acompañamos y reportamos — para que nada quede al azar cuando la agenda no alcanza.</p>
+      </div>
+      <div class="quien-card reveal d1">
+        <span class="num">02</span>
+        <h3>Hijos que viven <em>fuera de Guadalajara</em> y necesitan seguimiento confiable.</h3>
+        <p>Somos sus ojos, sus oídos y su presencia local. Comunicación clara, por los medios y en los tiempos que funcionan.</p>
+      </div>
+      <div class="quien-card reveal d2">
+        <span class="num">03</span>
+        <h3>Adultos mayores que requieren <em>apoyo en gestiones,</em> movilidad y acompañamiento.</h3>
+        <p>Una persona de confianza para lo cotidiano y para lo extraordinario — sin sentirse dependiente ni supervisado.</p>
+      </div>
+      <div class="quien-card reveal d3">
+        <span class="num">04</span>
+        <h3>Familias que buscan <em>tranquilidad, orden</em> y comunicación clara en momentos delicados.</h3>
+        <p>Orden operativo y humanidad: dos cosas que rara vez van juntas, y que son esenciales cuando algo cambia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios" class="servicios">
+  <div class="wrap">
+    <div class="section-label"><span class="num">iii.</span> Áreas de servicio</div>
+    <div class="intro">
+      <h2 class="h2 reveal">Un índice de lo que<br><em>podemos atender</em> por ti.</h2>
+      <p class="lede reveal d1">
+        Seis áreas de servicio diseñadas para cubrir desde una cita médica
+        hasta un viaje internacional, un procedimiento hospitalario o
+        simplemente un paseo por la tarde.
+      </p>
+    </div>
+
+    <div class="index">
+      <div class="idx-row reveal">
+        <div class="num">01</div>
+        <div class="title">Coordinación y acompañamiento <em>médico</em></div>
+        <div class="detail">Agendar citas médicas, acompañamiento presencial, seguimiento posterior y reporte a familiares. Presencia profesional en el consultorio y continuidad después.</div>
+        <div class="chev">→</div>
+      </div>
+      <div class="idx-row reveal">
+        <div class="num">02</div>
+        <div class="title">Apoyo <em>hospitalario</em> y procedimientos</div>
+        <div class="detail">Coordinación previa, acompañamiento en el ingreso, comunicación con familiares, reporte detallado y seguimiento posterior al alta.</div>
+        <div class="chev">→</div>
+      </div>
+      <div class="idx-row reveal">
+        <div class="num">03</div>
+        <div class="title">Visita de <em>bienestar</em> en casa</div>
+        <div class="detail">Revisión general del entorno, observación básica de bienestar, evaluación de seguridad residencial, recomendaciones y reporte a familiares.</div>
+        <div class="chev">→</div>
+      </div>
+      <div class="idx-row reveal">
+        <div class="num">04</div>
+        <div class="title">Asistencia <em>personal</em></div>
+        <div class="detail">Paseos, pagos y organización de documentos, coordinación de servicios en casa, administración de inmuebles, actividades recreativas y culturales, compras, gestiones y apoyo en trámites.</div>
+        <div class="chev">→</div>
+      </div>
+      <div class="idx-row reveal">
+        <div class="num">05</div>
+        <div class="title"><em>Viajes</em></div>
+        <div class="detail">Acompañamiento en viajes nacionales e internacionales con reporte diario. Logística, documentación y presencia durante el traslado y la estancia.</div>
+        <div class="chev">→</div>
+      </div>
+      <div class="idx-row reveal">
+        <div class="num">06</div>
+        <div class="title">Velada <em>nocturna</em></div>
+        <div class="detail">Acompañamiento en horario nocturno con reporte. Para noches de hospital, de transición o cuando simplemente es mejor no estar solo.</div>
+        <div class="chev">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANES ============ -->
+<section id="planes" class="planes">
+  <div class="wrap">
+    <div class="section-label"><span class="num">iv.</span> Planes mensuales</div>
+    <h2 class="h2 reveal">Tres formas de estar presentes.<br><em>Y una cuarta, a la medida.</em></h2>
+    <p class="lede reveal d1">
+      Elige el plan que mejor acompañe la etapa actual. Siempre puedes subir, bajar o personalizar.
+    </p>
+
+    <div class="plan-grid">
+      <div class="plan reveal">
+        <div class="head">
+          <div class="tier">Plan · 01</div>
+          <div class="name">Serenus <em>Esencial</em></div>
+          <div class="price">$6,800 <span class="m">MXN / mes</span></div>
+        </div>
+        <ul>
+          <li>2 visitas mensuales programadas</li>
+          <li>Coordinación básica</li>
+          <li>Reporte quincenal a la familia</li>
+          <li>Atención L–J 9:00–17:00 · V 9:00–13:00</li>
+          <li>Comunicación directa por WhatsApp</li>
+        </ul>
+        <a href="#contacto" class="cta"><span>Agendar consulta</span><span>→</span></a>
+      </div>
+
+      <div class="plan featured reveal d1">
+        <span class="ribbon">Más elegido</span>
+        <div class="head">
+          <div class="tier">Plan · 02</div>
+          <div class="name">Serenus <em>Plus</em></div>
+          <div class="price">$9,800 <span class="m">MXN / mes</span></div>
+        </div>
+        <ul>
+          <li>4 visitas mensuales programadas o de emergencia 24/7 cualquier día del año</li>
+          <li>Coordinación básica y médica</li>
+          <li>Reporte semanal a la familia</li>
+          <li>Llamada prioritaria 24/7 todo el año (hasta 3 teléfonos)</li>
+          <li>Comunicación directa y seguimiento continuo</li>
+        </ul>
+        <a href="#contacto" class="cta"><span>Agendar consulta</span><span>→</span></a>
+      </div>
+
+      <div class="plan reveal d2">
+        <div class="head">
+          <div class="tier">Plan · 03</div>
+          <div class="name">Serenus <em>Premium</em></div>
+          <div class="price">$14,500 <span class="m">MXN / mes</span></div>
+        </div>
+        <ul>
+          <li>4 visitas mensuales programadas o de emergencia 24/7 cualquier día del año</li>
+          <li>4 acompañamientos médicos al mes incluidos</li>
+          <li>Coordinación integral</li>
+          <li>Llamada prioritaria 24/7 todo el año (hasta 5 teléfonos)</li>
+          <li>Disponibilidad para viajes (sin incluir costo diario)</li>
+          <li>Disponibilidad para velada nocturna</li>
+          <li>Atención en cualquier parte del país o del mundo</li>
+          <li>Reporte semanal a la familia</li>
+        </ul>
+        <a href="#contacto" class="cta"><span>Agendar consulta</span><span>→</span></a>
+      </div>
+    </div>
+
+    <div class="plan-footer reveal">
+      <div>
+        <div class="t">Planes <em>personalizados</em></div>
+        <div class="s" style="margin-top:10px;">Se diseñan paquetes a la medida según necesidades específicas — situaciones familiares únicas, períodos acotados o requerimientos fuera de plan.</div>
+      </div>
+      <a href="#contacto" class="link">Conversar un plan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section id="como" class="como">
+  <div class="wrap">
+    <div class="section-label"><span class="num">v.</span> Cómo funciona</div>
+    <h2 class="h2 reveal">De la primera conversación<br>al <em>seguimiento continuo.</em></h2>
+    <p class="lede reveal d1">
+      Un proceso simple, pausado y humano — diseñado para que cada familia decida con claridad.
+    </p>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="n">Paso 01</div>
+        <div class="big">i</div>
+        <h4>Consulta inicial sin costo</h4>
+        <p>30 minutos para conocernos, escucharles y entender la situación. Sin compromiso, sin formatos, sin presión.</p>
+      </div>
+      <div class="step reveal d1">
+        <div class="n">Paso 02</div>
+        <div class="big">ii</div>
+        <h4>Evaluación de necesidades</h4>
+        <p>Una mirada cuidadosa a rutinas, salud, entorno y prioridades para identificar qué se puede simplificar.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="n">Paso 03</div>
+        <div class="big">iii</div>
+        <h4>Propuesta personalizada</h4>
+        <p>Un plan claro — con alcance, frecuencia, canales de comunicación y costo — presentado por escrito.</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="n">Paso 04</div>
+        <div class="big">iv</div>
+        <h4>Inicio y seguimiento continuo</h4>
+        <p>Comenzamos con una presentación cuidada, y a partir de ahí acompañamos, reportamos y ajustamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ ELEGIR ============ -->
+<section id="porque">
+  <div class="wrap">
+    <div class="section-label"><span class="num">vi.</span> Por qué elegir Serenus</div>
+    <div class="porque">
+      <div class="reveal">
+        <h2 class="h2">Lo que hace la diferencia<br>no se mide en <em>minutos.</em></h2>
+        <p class="lede">
+          Se mide en criterio, en trato, en presencia y en la tranquilidad
+          de saber que alguien lo está haciendo bien — por ustedes.
+        </p>
+      </div>
+
+      <div class="reasons">
+        <div class="reason reveal">
+          <div class="n">01</div>
+          <div>
+            <div class="t">Atención <em>personalizada</em></div>
+            <div class="d">Cada familia, cada adulto mayor, cada plan — tratados como únicos, porque lo son.</div>
+          </div>
+        </div>
+        <div class="reason reveal d1">
+          <div class="n">02</div>
+          <div>
+            <div class="t">Comunicación <em>directa</em></div>
+            <div class="d">Hablamos con quien debe saber, por el medio que prefieran, con la frecuencia acordada.</div>
+          </div>
+        </div>
+        <div class="reason reveal d2">
+          <div class="n">03</div>
+          <div>
+            <div class="t">Servicio <em>puntual, discreto y profesional</em></div>
+            <div class="d">Presencia que no invade, tiempos que se respetan, conducta que siempre honra a la familia.</div>
+          </div>
+        </div>
+        <div class="reason reveal d3">
+          <div class="n">04</div>
+          <div>
+            <div class="t">Apoyo <em>multilingüe</em></div>
+            <div class="d">Español, inglés, francés e italiano — para familias con vínculos dentro y fuera del país.</div>
+          </div>
+        </div>
+        <div class="reason reveal d4">
+          <div class="n">05</div>
+          <div>
+            <div class="t">Ubicados en <em>Guadalajara</em></div>
+            <div class="d">Con disponibilidad para acompañar a cualquier parte del país o del mundo cuando la familia lo requiere.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE NOSOTROS ============ -->
+<section id="sobre" class="sobre">
+  <div class="wrap">
+    <div class="section-label"><span class="num">vii.</span> Sobre nosotros</div>
+    <h2 class="h2 reveal">Un proyecto <em>personal,</em><br>hecho servicio.</h2>
+
+    <div class="sobre-grid">
+      <div>
+        <div class="mision-card reveal">
+          <div class="k">Nuestra misión</div>
+          <p>Reducir el estrés de las familias y brindar tranquilidad mediante una atención <em>personalizada, ética y profesional.</em></p>
+        </div>
+        <div class="mision-card reveal d1">
+          <div class="k">Nuestra visión</div>
+          <p>Ser el servicio de concierge senior <em>más confiable y humano</em> en Guadalajara.</p>
+        </div>
+      </div>
+
+      <div class="founder reveal d2">
+        <div class="portrait" aria-hidden="true"></div>
+        <div class="name">Francisco Z. <em>Guerrero</em></div>
+        <div class="role">Fundador · Guadalajara, Jalisco</div>
+        <div class="bio">
+          Fundé Serenus porque vi, en mi propia familia, lo difícil que puede ser
+          sostener el cuidado de un padre o una madre cuando la vida sigue corriendo.
+          Nuestro trabajo consiste en estar — con criterio, con presencia y con el
+          trato que merecen las personas que construyeron todo lo que hoy tenemos.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COBERTURA ============ -->
+<section id="cobertura" class="cobertura">
+  <div class="wrap">
+    <div class="section-label"><span class="num">viii.</span> Zona de cobertura</div>
+    <h2 class="h2 reveal">Presentes en la <em>Zona Metropolitana</em><br>de Guadalajara.</h2>
+
+    <div class="grid">
+      <div class="intro-t reveal">
+        <strong>Servicio profesional en toda la ZMG.</strong>
+        Acompañamiento, movilidad y gestión integral dentro de la Zona Metropolitana
+        de Guadalajara. Si tu colonia no aparece en la lista, pregúntanos —
+        con frecuencia podemos atender también.
+      </div>
+      <div class="zones reveal d1">
+        <span class="z">Chapalita</span>
+        <span class="z">Jardín de San Ignacio</span>
+        <span class="z">Ciudad del Sol</span>
+        <span class="z">Providencia</span>
+        <span class="z">Prados Providencia</span>
+        <span class="z">Colomos Providencia</span>
+        <span class="z">Rinconada de Santa Rita</span>
+        <span class="z">Lomas Altas</span>
+        <span class="z">Lomas del Valle</span>
+        <span class="z">Colinas de San Javier</span>
+        <span class="z">Puerta de Hierro</span>
+        <span class="z">Zona Andares</span>
+        <span class="z">Valle Real</span>
+        <span class="z">Monraz</span>
+        <span class="z">El Country</span>
+        <span class="z">Seattle</span>
+        <span class="z">Jardines del Bosque</span>
+        <span class="z">Puerta del Bosque</span>
+        <span class="z">El Coto</span>
+        <span class="z">Royal Country</span>
+        <span class="z">Atlas Colomos</span>
+        <span class="z">Coral</span>
+        <span class="z">Magna</span>
+        <span class="z">El Secreto</span>
+        <span class="z">San Bernardo</span>
+        <span class="z">Real San Bernardo</span>
+        <span class="z">Santa Isabel</span>
+        <span class="z">San Wenceslao</span>
+        <span class="z more">Otras zonas — preguntar</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="section-label"><span class="num">ix.</span> Preguntas frecuentes</div>
+    <h2 class="h2 reveal">Respuestas claras,<br>antes de <em>la primera llamada.</em></h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">01</span><span class="q">¿Qué hace <em>exactamente</em> Serenus?</span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Serenus es un servicio de concierge senior: acompañamos, coordinamos y reportamos. Hacemos presencia en citas médicas, procedimientos, trámites y actividades cotidianas; organizamos agendas y gestiones; y mantenemos a la familia informada con reportes claros. Somos la extensión discreta y profesional de quien no siempre puede estar.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">02</span><span class="q">¿Qué <em>no hace</em> Serenus?</span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Serenus no sustituye servicios médicos ni realiza diagnósticos clínicos. No administramos medicamentos ni hacemos intervenciones de enfermería. Nuestra labor es de acompañamiento, coordinación y reporte — siempre en comunicación con los profesionales de salud que la familia ya tiene, o facilitando la referencia adecuada cuando se necesite.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">03</span><span class="q">¿Cómo se <em>coordina la comunicación</em> con la familia?</span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Al inicio del servicio definimos contigo los canales (WhatsApp, correo, llamada), los tiempos (diario, semanal, quincenal) y quién debe recibir qué. Cada plan incluye un reporte estructurado y, cuando ocurre algo relevante, un aviso inmediato a los contactos prioritarios. Todo queda por escrito.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">04</span><span class="q">¿Qué incluye una <em>visita típica?</em></span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Una visita puede incluir una conversación pausada, un paseo, la revisión del entorno y los insumos de la casa, el acompañamiento a una cita, la organización de documentos o simplemente presencia tranquila. Cada visita se cierra con un reporte a la familia con lo relevante del día.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">05</span><span class="q">¿Cómo se define un <em>plan personalizado?</em></span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>Partimos de una consulta inicial sin costo. Escuchamos, preguntamos y observamos. Con eso diseñamos una propuesta por escrito con alcance, frecuencia, canales, responsables y costo. La familia decide. Los planes se pueden ajustar en cualquier momento.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">06</span><span class="q">¿Qué ocurre en caso de <em>emergencia?</em></span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>En planes Plus y Premium contamos con disponibilidad 24/7 los 365 días del año para llamada prioritaria. Ante una emergencia activamos el protocolo acordado con la familia: notificación a los contactos, coordinación con servicios médicos de emergencia y acompañamiento presencial cuando es necesario.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="n">07</span><span class="q">¿Cómo se <em>cotiza y contrata</em> el servicio?</span><span class="pm">+</span></button>
+        <div class="faq-a"><div><p>La consulta inicial es sin costo ni compromiso. Tras la evaluación enviamos una propuesta formal por escrito. Al aceptarla firmamos un acuerdo de servicio y definimos fechas de inicio. Aceptamos transferencia electrónica; la facturación fiscal se emite a solicitud.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO / CIERRE ============ -->
+<section id="contacto" class="contacto">
+  <div class="wrap">
+    <div class="section-label"><span class="num">x.</span> Contacto</div>
+
+    <div class="contacto-grid">
+      <div class="closer">
+        <h2 class="h-big reveal">Hablemos con <em>calma.</em><br>Para que el resto<br>sea tranquilidad.</h2>
+        <div class="ctas reveal d1">
+          <a href="https://wa.me/523320202019?text=Hola%20Serenus,%20me%20gustar%C3%ADa%20agendar%20una%20consulta." class="btn btn-primary">
+            Agendar consulta
+            <svg class="arrow" viewBox="0 0 18 10" fill="none"><path d="M1 5h16m0 0L13 1m4 4l-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </a>
+          <a href="https://wa.me/523320202019" class="btn btn-ghost">
+            <span class="wa" aria-hidden="true"></span>
+            Contactar por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-info reveal d2">
+        <div class="row">
+          <span class="k">Contacto</span>
+          <span class="v"><em>Francisco Z. Guerrero</em></span>
+        </div>
+        <div class="row">
+          <span class="k">Oficina</span>
+          <span class="v">Hipódromo 2005<br>Col. Colomos Providencia · C.P. 44660<br>Guadalajara, Jalisco, México</span>
+        </div>
+        <div class="row">
+          <span class="k">WhatsApp</span>
+          <span class="v"><a href="https://wa.me/523320202019">33 2020 2019</a></span>
+        </div>
+        <div class="row">
+          <span class="k">Instagram</span>
+          <span class="v"><a href="#">@serenus.gdl</a></span>
+        </div>
+        <div class="row">
+          <span class="k">Facebook</span>
+          <span class="v"><a href="#">Serenus</a></span>
+        </div>
+        <div class="row">
+          <span class="k">Horario</span>
+          <span class="v">Lun–Jue 9:00–17:00 · Vie 9:00–13:00<br>Atención 24/7 para planes Plus y Premium</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="aviso reveal">
+      <div class="k">Aviso importante</div>
+      <div class="v">Serenus no sustituye servicios médicos ni realiza diagnósticos clínicos. Es un servicio de acompañamiento y coordinación.</div>
+    </div>
+
+    <footer class="foot">
+      <div>Serenus <em>— Serenity for Seniors.</em></div>
+      <div>© MMXXVI · Guadalajara · Jalisco</div>
+      <div>Hecho con calma.</div>
+    </footer>
+  </div>
+</section>
+
+<!-- Sticky WhatsApp -->
+<a href="https://wa.me/523320202019" class="sticky-wa" id="stickyWa">
+  <span class="wa-dot" aria-hidden="true"></span>
+  WhatsApp
+</a>
+
+<script>
+  // Nav shadow on scroll
+  const nav = document.getElementById('topnav');
+  const sticky = document.getElementById('stickyWa');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 20);
+    sticky.classList.toggle('show', y > 600);
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      // Close others (optional — feels more editorial)
+      document.querySelectorAll('.faq-item.open').forEach(o => { if (o !== item) o.classList.remove('open');});
+      item.classList.toggle('open', !isOpen);
+    });
+  });
+
+  // Open first FAQ by default
+  document.querySelector('.faq-item')?.classList.add('open');
+</script>
+
+</body>
+</html>
